@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrains-Mono/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrains-Mono/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrains-Mono/JetBrainsMono-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrains-Mono/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  & *::selection {
+    background-color: #262626;
+  }
+  &::selection {
+    background-color: #262626;
+  }
+  & *::selection {
+    color: #fafafa;
+  }
+  &::selection {
+    color: #fafafa;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.logo-img {
+  will-change: transform;
+  transform: translateZ(0);
+  padding-left: 0.5rem;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .logo-img {
+      transform: translateZ(0);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .clip-bottom-cut1 {
+    clip-path: inset(0 0 31.6% 0);
+  }
+
+  .clip-bottom-cut2 {
+    clip-path: inset(0 0 30.6% 0);
+  }
+}
+
+/* Remote collaborator carets in the editor. Per-user colors and name labels
+   are injected by components/room/Editor.tsx. */
+.arcade-remote-caret {
+  position: relative;
+  border-left: 2px solid;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.arcade-remote-caret::after {
+  position: absolute;
+  top: -1.35em;
+  left: -2px;
+  padding: 0 4px;
+  border-radius: 3px 3px 3px 0;
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.35em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
