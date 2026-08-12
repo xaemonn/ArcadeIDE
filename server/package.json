@@ -1,0 +1,40 @@
+{
+  "name": "arcadeide-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Realtime collaboration (Socket.IO + Yjs) and code execution backend for ArcadeIDE",
+  "author": "Dishakwatra",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xaemonn/ArcadeIDE.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "smoke": "tsx scripts/smoke.ts"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "esbuild": "^0.28.2",
+    "express": "^5.3.0",
+    "jose": "^6.2.13",
+    "socket.io": "^4.8.4",
+    "yjs": "^13.6.33"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.5",
+    "socket.io-client": "^4.8.4",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
