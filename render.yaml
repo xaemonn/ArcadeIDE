@@ -1,0 +1,22 @@
+# Render Blueprint for the realtime + code-execution backend (server/).
+# Render dashboard -> New -> Blueprint -> pick this repository.
+# The Next.js app is deployed separately (Vercel or Netlify).
+services:
+  - type: web
+    name: arcadeide-backend
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # Same value as ROOM_TOKEN_SECRET in the Next.js app.
+      - key: ROOM_TOKEN_SECRET
+        sync: false
+      # Your frontend URL(s), e.g. https://arcadeide.vercel.app
+      - key: CLIENT_ORIGIN
+        sync: false
+      # The free plan has 512 MB of RAM; run one program at a time.
+      - key: EXEC_CONCURRENCY
+        value: "1"
